@@ -1,28 +1,30 @@
-import random
 import discord
-from botlogic import passwordGenerator
-from data import TOKEN
+from discord.ext import commands
+from botlogic import generatePassword
+from datetime import datetime
+
+t = "MTMwMjA3NDQzNTA1ODI3NDQ2Nw.GzBwli.8824oE8GLAxn9w0Pl-HVSqQQeWKyBLYBROgX24"
 
 intents = discord.Intents.default()
 intents.message_content = True
-client = discord.Client(intents=intents)
 
-@client.event
+bot = commands.Bot(command_prefix='!kodlandbot ', intents=intents)
+
+@bot.event
 async def on_ready():
-    print(f'Hemos iniciado sesión como {client.user}')
+    print(f'We have logged in as {bot.user}')
 
-@client.event
-async def on_message(message):
+@bot.command()
+async def hello(ctx):
+    await ctx.send(f'Hola, soy un bot {bot.user}!')
+
+@bot.command()
+async def heh(ctx, count_heh = 5):
+    await ctx.send("he" * count_heh)
     
-    if message.author == client.user:
-        return
-    
-    elif message.content.startswith('hello'):
-        await message.channel.send("Hi")
-        
-    elif message.content.startswith('bye'):
-        await message.channel.send("\U0001f642")
-        
-    else:
-        await message.channel.send(message.content)         
-client.run(TOKEN)
+@bot.command()
+async def password(ctx, passwordLenght):
+    passwordLenght = int(passwordLenght)
+    await ctx.send(generatePassword(passwordLenght))
+
+bot.run(t)
