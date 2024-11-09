@@ -1,8 +1,9 @@
 import random
 
-def passwordGenerator(passwordLenght):
-    elements = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+"    
+def generatePassword(passwordLen):
+    elements = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    
     password = ""
-    for i in range(passwordLenght):
+    for i in range(passwordLen):
         password += random.choice(elements)
     return password
