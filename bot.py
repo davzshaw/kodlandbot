@@ -3,7 +3,7 @@ from discord.ext import commands
 from botlogic import generatePassword
 from datetime import datetime
 
-t = "MTMwMjA3NDQzNTA1ODI3NDQ2Nw.GzBwli.8824oE8GLAxn9w0Pl-HVSqQQeWKyBLYBROgX24"
+t = "TOKEN HERE"
 
 intents = discord.Intents.default()
 intents.message_content = True
